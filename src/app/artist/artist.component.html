@@ -1,0 +1,35 @@
+<link
+  href="https://fonts.googleapis.com/css?family=Boogaloo"
+  rel="stylesheet"
+/>
+<br />
+
+<div>
+  <ng-container *ngIf="artist !== null">
+    <h1 class="title" >Profile of {{ artist["name"] }}</h1>
+    <br />
+    <div class="row">
+      <div class="column">
+        <img [src]="artist.images[0].url" alt="" class="center" width="200" length="300" />
+      </div>
+      <div class="column">
+        <p class="data">Followers: {{ artist.followers.total }}</p>
+        <p class="data">Genres: {{ artist.genres.join(", ") }}</p>
+        <p class="data">Popularity: {{ artist["popularity"] }}</p>
+      </div>
+    </div>
+  </ng-container>
+  <br />
+  <br />
+  <div class="row">
+    <div
+      class="column"
+      *ngFor="let album of (albums$ | async)"
+    >
+      <app-album-box
+        [album]="album"
+        (viewDetails)="viewDetails($event)"
+      ></app-album-box>
+    </div>
+  </div>
+</div>

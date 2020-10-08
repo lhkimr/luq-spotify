@@ -1,0 +1,39 @@
+<br />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+<div
+  class="card text-white bg-secondary mb-3"
+  style="max-width: 60rem;margin: auto;"
+>
+
+  <div class="card-header"><h1 style="text-align:center" class="title">Listen Music Here</h1></div>
+  <div class="card-body">
+    <p style="text-align:center" class="need">Luq-Spotify will fill your void!</p>
+    <form>
+      <div class="form-group"></div>
+      <input
+        class="w3-input w3-border w3-round-xxlarge purple-font"
+        color="black"
+        type="text"
+        [(ngModel)]="searchStr"
+        placeholder="                                                                  Search Artist Here"
+        (keyup)="searchTerm$.next()"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <!-- <button type="submit" (click)="searchMusic()" name="submit" value="submit">
+    Submit
+  </button> -->
+    </form>
+    <div *ngFor="let item of resultItems">
+      <app-result-box
+        [musicData]="item"
+        (viewMusicDetails)="listenForDetails($event)"
+      ></app-result-box>
+    </div>
+  </div>
+</div>
+
+
+
+
+
